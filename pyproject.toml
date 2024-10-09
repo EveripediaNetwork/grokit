@@ -3,11 +3,11 @@ requires = ['setuptools>=64.0.0', 'build']
 build-backend = 'setuptools.build_meta'
 
 [project]
-name = 'package_name'
+name = 'grokit'
 dynamic = ['version']
-description = 'description_value'
+description = ''
 authors = [
-    { name = 'author_value', email = 'email@example.com' },
+    { name = 'Rodrigo Martínez (brunneis)', email = 'dev@brunneis.com' },
 ]
 license = { text = 'GNU General Public License v3 (GPLv3)' }
 classifiers = [
@@ -26,13 +26,13 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = 'url_value'
+Homepage = 'https://github.com/EveripediaNetwork/grokit'
 
 [tool.setuptools.packages.find]
-include = ['package_name']
+include = ['grokit']
 
 [tool.setuptools.package-data]
-'package_name' = ['*', '**/*']
+'grokit' = ['*', '**/*']
 
 [tool.setuptools.dynamic]
-version = {attr = 'package_name.version.__version__'}
+version = {attr = 'grokit.version.__version__'}
