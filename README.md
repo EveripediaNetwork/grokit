@@ -21,10 +21,10 @@ Import the `Grokit` class and create an instance:
 ```python
 from grokit import Grokit
 
-# Or use the X_AUTH_TOKEN and X_CSRF_TOKEN environment variables
+# You can set the X_AUTH_TOKEN and X_CSRF_TOKEN environment variables instead
 grok = Grokit(
-    # auth_token='your_auth_token_here',
-    # csrf_token='your_csrf_token_here',
+    auth_token='***',
+    csrf_token='***',
 )
 ```
 
