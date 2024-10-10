@@ -42,7 +42,7 @@ for chunk in grok.stream('Who are you?', model_id='grok-2'):
     print(chunk, end='', flush=True)
 ```
 
-# Credentials
+## Credentials
 
 To obtain the necessary credentials for using Grokit, follow these steps:
 
