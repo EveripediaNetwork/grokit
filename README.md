@@ -20,7 +20,7 @@ Import the `Grokit` class and create an instance:
 
 ```python
 from grokit import Grokit
-Generate a response:
+
 # Or use the X_AUTH_TOKEN and X_CSRF_TOKEN environment variables
 grok = Grokit(
     # auth_token='your_auth_token_here',
