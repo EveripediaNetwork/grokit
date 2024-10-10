@@ -22,7 +22,7 @@ classifiers = [
 ]
 requires-python = '>=3.10'
 dependencies = [
-    # Add your dependencies here
+    'requests',
 ]
 
 [project.urls]
@@ -32,7 +32,7 @@ Homepage = 'https://github.com/EveripediaNetwork/grokit'
 include = ['grokit']
 
 [tool.setuptools.package-data]
-'grokit' = ['*', '**/*']
+'grokit' = ['*', '**/*', '!**/__pycache__']
 
 [tool.setuptools.dynamic]
 version = {attr = 'grokit.version.__version__'}
