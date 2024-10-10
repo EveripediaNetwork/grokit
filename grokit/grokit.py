@@ -94,6 +94,38 @@ class Grokit:
             model_id,
         )
 
+    def image(self, prompt: str) -> bytes:
+        image_url = self._get_image_url(prompt)
+        image_response = requests.get(image_url)
+        if image_response.status_code == 200:
+            return image_response.content
+        raise ValueError('Failed to download the image')
+
+    def image_url(self, prompt: str) -> str:
+        return self._get_image_url(prompt)
+
+    def _get_image_url(self, prompt: str) -> str:
+        conversation_id = self.create_conversation()
+        if not conversation_id:
+            raise ValueError('Failed to create conversation')
+        image_prompt = 'Generate an image of "{}"'.format(prompt)
+        response = self._stream_response(
+            conversation_id,
+            image_prompt,
+            '',
+            GrokModels.GROK_2_MINI,
+        )
+
+        for chunk in response:
+            try:
+                data = json.loads(chunk)
+                if 'result' in data and 'imageAttachment' in data['result']:
+                    return data['result']['imageAttachment']['imageUrl']
+            except json.JSONDecodeError:
+                continue
+
+        raise ValueError('Failed to generate the image')
+
     def _ensure_conversation_id(self, conversation_id: Optional[str]) -> str:
         if not conversation_id:
             conversation_id = self.create_conversation()
@@ -169,5 +201,8 @@ class Grokit:
         for line in response.iter_lines():
             if line:
                 chunk = json.loads(line)
-                if 'result' in chunk and 'message' in chunk['result']:
-                    yield chunk['result']['message']
+                if 'result' in chunk:
+                    if 'message' in chunk['result']:
+                        yield chunk['result']['message']
+                    elif 'imageAttachment' in chunk['result']:
+                        yield json.dumps(chunk)

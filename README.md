@@ -28,18 +28,34 @@ grok = Grokit(
 )
 ```
 
-## Generate
+## Generate Text
 
 ```python
 response = grok.generate('Who are you?', model_id='grok-2-mini')
 print(response)
 ```
 
-## Stream
+## Stream Text
 
 ```python
 for chunk in grok.stream('Who are you?', model_id='grok-2'):
     print(chunk, end='', flush=True)
+```
+
+## Generate Image
+
+### JPEG binary
+```python
+image_data = grok.image('An astronaut riding a horse.')
+
+with open('sunset.jpg', 'wb') as f:
+    f.write(image_data)
+```
+
+### image URL
+```python
+image_url = grok.image_url('An astronaut riding a horse.')
+print(image_url)
 ```
 
 ## Credentials
