@@ -5,7 +5,7 @@ build-backend = 'setuptools.build_meta'
 [project]
 name = 'grokit'
 dynamic = ['version']
-description = ''
+description = 'Unofficial Python client for Grok models'
 authors = [
     { name = 'Rodrigo Martínez (brunneis)', email = 'dev@brunneis.com' },
 ]
