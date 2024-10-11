@@ -77,5 +77,5 @@ To obtain the necessary credentials for using Grokit, follow these steps:
 7. In the Headers section, find the "Cookie" header under Request Headers.
 
 8. From the cookie string, extract the following values:
-   - `ct0`: This is your X_CSRF_TOKEN
-   - `auth_token`: This is your X_AUTH_TOKEN
+   - `ct0`: This is your csrf token
+   - `auth_token`: This is your auth token
