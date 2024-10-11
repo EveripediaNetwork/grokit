@@ -42,13 +42,13 @@ for chunk in grok.stream('Who are you?', model_id='grok-2'):
     print(chunk, end='', flush=True)
 ```
 
-## Generate Image
+## Generate Images
 
 ### JPEG binary
 ```python
 image_data = grok.image('An astronaut riding a horse.')
 
-with open('sunset.jpg', 'wb') as f:
+with open('image.jpg', 'wb') as f:
     f.write(image_data)
 ```
 
